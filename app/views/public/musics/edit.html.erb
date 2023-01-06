@@ -1,0 +1,51 @@
+<h1>曲出し編集</h1>
+
+<%= form_with model: @music, url: music_path, method: :patch do |f| %>
+
+  <div>
+    <%= f.label :"①曲名" %>
+  	<%= f.text_field :song1_name %>
+	</div>
+	
+	<div>
+  	<%= f.label :"①曲時間(秒数切り上げ)" %>
+  	<%= f.number_field :song1_time, min: 1, max: 30 %>
+	</div>
+	
+	<div>
+    <%= f.label :"②曲名（１曲の場合は空白）" %>
+  	<%= f.text_field :song2_name %>
+	</div>
+	
+	<div>
+  	<%= f.label :"②曲時間(秒数切り上げ)" %>
+  	<%= f.number_field :song2_time, min: 1, max: 30 %>
+	</div>
+	
+	<div>
+    <%= f.label :"出場バンド名" %>
+  	<%= f.text_field :band_name %>
+	</div>
+	
+	<div>
+    <%= f.label :"使用マイク本数" %>
+  	<%= f.select :mike_number , [ [1,1], [2, 2], [3, 3 ] ,[4, 4], [5, 5] ], prompt: "マイクの使用本数をを選択" %>
+	</div>
+	
+	<div>
+    <%= f.label :"公開設定" %>
+  	<%= f.radio_button :status, "false" %>
+  	<%= f.label :"曲出しを公開" %>
+  	<%= f.radio_button :status, "true" %>
+  	<%= f.label :"曲出しを非公開" %>
+	</div>
+	
+	<div>
+    <%= f.label :"備考・要望" %>
+  	<%= f.text_area :other %>
+	</div>
+
+  <%= f.submit "曲出しを登録" %>
+
+<% end %>
+

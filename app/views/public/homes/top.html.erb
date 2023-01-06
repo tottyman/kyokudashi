@@ -1,0 +1,12 @@
+<h2>
+  次回のライブは〜〜〜です！<br/>
+  〜〜〜までに曲出しをお願いいたします！
+</h2>
+
+<% if current_user.present? %>
+  <p>こんにちは、<%= current_user.name %>さん！</p>
+<% else %>
+  <p>こんにちは、ゲストさん！</p>
+<% end %>
+
+<%= link_to destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' do %> ログアウト <% end %>

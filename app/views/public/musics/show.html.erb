@@ -1,0 +1,14 @@
+<h1>曲だし詳細</h1>
+
+<%= @music.song1_name %>
+<%= @music.song1_time %>
+<%= @music.song2_name %>
+<%= @music.song2_time %>
+<%= @music.band_name %>
+<%= @music.mike_number %>
+<%= @music.status %>
+<%= @music.other %>
+
+<%= link_to edit_music_path(@music) do %>
+  編集
+<% end %>
