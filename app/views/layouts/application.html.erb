@@ -8,64 +8,93 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/375332867e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   </head>
 
   <body>
     <header>
-      
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 pt-4 pb-4">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 pt-3 pb-3 shadow">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <a class="navbar-brand" href="#">Navbar</a>
-        
+
+        <div class="navbar-brand text-light ml-4">
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', :size =>'60x50' %>
+          <% end %>
+        </div>
+
+        <div class="navbar-brand text-light ml-5">
+          <% if current_user.present? %>
+            <p>こんにちは、<%= current_user.name %>さん！</p>
+          <% else %>
+            <p>こんにちは、ゲストさん！</p>
+          <% end %>
+        </div>
+
         <div class="collapse navbar-collapse">
-          
+
           <ul class="navbar-nav ml-auto mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">新規登録</a>
+            <li class="nav-item active mr-3">
+              <%= link_to root_path do %>
+                マイページ
+              <% end %>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">データ一覧</a>
+            <li class="nav-item active mr-3">
+              <%= link_to root_path do %>
+                マイページ
+              <% end %>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">エクスポート</a>
+            <li class="nav-item active mr-3">
+              <%= link_to root_path do %>
+                マイページ
+              <% end %>
             </li>
           </ul>
-          
+
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %> LOGOUT <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+                <% end %>
               </li>
             <% else %>
               <li class="nav-item mr-3">
-                <%= link_to new_user_registration_path, class: 'btn rounded-pill btn-outline-light text-info' do %> SIGN UP <% end %>
+                <%= link_to new_user_registration_path, class: 'btn rounded-pill btn-outline-light text-info' do %>
+                  <i class="fa-solid fa-user-plus"></i> SIGN UP
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to new_user_session_path, class: 'btn rounded-pill btn-outline-light text-success' do %> SIGN IN <% end %>
+                <%= link_to new_user_session_path, class: 'btn rounded-pill btn-outline-light text-success' do %>
+                  <i class="fa-solid fa-right-to-bracket"></i> SIGN IN
+                <% end %>
               </li>
             <% end %>
           </ul>
-          
+
         </div>
       </nav>
     </header>
-    
+
+    <main>
     <%= yield %>
-    
+    </main>
+
     <footer class="fixed-bottom">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 pt-4 pb-4">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 pt-3 pb-3">
         <div class="container">
         	<div class="row">
-          	<div class="mx-auto">
-          	  
+          	<div class="mx-auto text-light">
+              <p>利用規約　|　プライバシーポリシー</p>
+              <p>Copyright © Infratop Inc. All Rights Reserved.</p>
           	</div>
           </div>
         </div>
       </nav>
     </footer>
-    
+
   </body>
 </html>

@@ -1,12 +1,10 @@
-<h2>
+<h2 class="head-line title_h2 text-center">
   次回のライブは〜〜〜です！<br/>
   〜〜〜までに曲出しをお願いいたします！
 </h2>
 
-<% if current_user.present? %>
-  <p>こんにちは、<%= current_user.name %>さん！</p>
-<% else %>
-  <p>こんにちは、ゲストさん！</p>
-<% end %>
-
-<%= link_to destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' do %> ログアウト <% end %>
+<div class="text-center p-5">
+  <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
+    <b>曲出しをする</b>
+  <% end %>
+</div>
