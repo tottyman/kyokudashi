@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :musics
+  
+  has_one_attached :image
+  
+
 end

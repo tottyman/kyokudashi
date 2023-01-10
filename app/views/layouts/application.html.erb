@@ -38,18 +38,33 @@
 
           <ul class="navbar-nav ml-auto mr-auto">
             <li class="nav-item active mr-3">
-              <%= link_to root_path do %>
-                マイページ
+              <% if current_user.present? %>
+                <%= link_to user_path(current_user.id) do %>
+                  <i class="fa-solid fa-user"></i> マイページ
+                <% end %>
+              <% else %>
               <% end %>
             </li>
             <li class="nav-item active mr-3">
-              <%= link_to root_path do %>
-                マイページ
+              <% if current_user.present? %>
+                <% if current_user.musics.exists? %>
+                  <% @music = Music.where(user_id: current_user.id) %>
+                  <% @music.each do |music| %>
+                    <%= link_to music_path(music.id) do %>
+                      マイ曲出し
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_music_path do %>
+                    曲出し
+                  <% end %>
+                <% end %>
+              <% else %>
               <% end %>
             </li>
             <li class="nav-item active mr-3">
-              <%= link_to root_path do %>
-                マイページ
+              <%= link_to musics_path do %>
+                曲出し一覧
               <% end %>
             </li>
           </ul>
@@ -83,7 +98,7 @@
     <%= yield %>
     </main>
 
-    <footer class="fixed-bottom">
+    <footer>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 pt-3 pb-3">
         <div class="container">
         	<div class="row">

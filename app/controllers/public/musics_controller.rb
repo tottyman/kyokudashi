@@ -34,6 +34,12 @@ class Public::MusicsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @music = Music.find(params[:id])
+    @music.destroy
+    redirect_to new_music_path
+  end
 
   private
 

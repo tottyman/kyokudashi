@@ -1,4 +1,4 @@
-<h2 class="text-center"><b>曲出し一覧</b></h2>
+<h2 class="text-center"><b>ユーザー 一覧</b></h2>
 
 <div class="container">
   <div class="row">
@@ -6,26 +6,26 @@
       <table class="table table-hover table-bordered table-condensed">
         <thead>
           <tr class="text-light bg-dark">
-            <th>ニックネーム</th>
-            <th>バンド名</th>
-            <th>曲①</th>
-            <th>曲②</th>
+            <th>プロフィール画像</th>
+            <th>表示名</th>
+            <th>自己紹介</th>
           </tr>
         </thead>
         <tbody>
-          <% @musics.each do |music| %>
+          <% @users.each do |user| %>
             <tr class="bg-light">
               <td class="col-auto">
-                <%= music.user.nickname %>
+                <% if user.image.attached? %>
+                  <%= image_tag user.image, size: "60x60" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "60x60" %>
+                <% end %>
               </td>
               <td class="col-auto">
-                <%= music.band_name %>
+                <%= user.nickname %>
               </td>
                <td class="col-auto">
-                <%= music.song1_name %>
-              </td>
-               <td class="col-auto">
-                <%= music.song2_name %>
+                <%= user.introduction %>
               </td>
             </tr>
           <% end %>
