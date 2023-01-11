@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-  
   # 会員側のルーティング設定
   scope module: :public do
     root to: 'homes#top'
@@ -18,5 +17,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
   
+  # admin側のルーティング設定
+  namespace :admin do
+    get 'top' => 'homes#top'
+    patch 'top' => 'homes#update'
+    delete 'top' => 'homes#destroy'
+    
+  end
   
 end

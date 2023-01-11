@@ -21,13 +21,21 @@
         </button>
 
         <div class="navbar-brand text-light ml-4">
-          <%= link_to root_path do %>
-            <%= image_tag 'logo.png', :size =>'60x50' %>
+          <% if admin_signed_in? %>
+            <%= link_to admin_top_path do %>
+              <%= image_tag 'logo.png', :size =>'60x50' %>
+            <% end %>
+          <% else %>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png', :size =>'60x50' %>
+            <% end %>
           <% end %>
         </div>
 
         <div class="navbar-brand text-light ml-5">
-          <% if current_user.present? %>
+          <% if admin_signed_in? %>
+            <p>管理者アカウント</p>
+          <% elsif current_user.present? %>
             <p>こんにちは、<%= current_user.name %>さん！</p>
           <% else %>
             <p>こんにちは、ゲストさん！</p>
@@ -45,6 +53,7 @@
               <% else %>
               <% end %>
             </li>
+            
             <li class="nav-item active mr-5">
               <% if current_user.present? %>
                 <% if current_user.musics.exists? %>
@@ -62,20 +71,38 @@
               <% else %>
               <% end %>
             </li>
-            <li class="nav-item active mr-3">
-              <%= link_to musics_path do %>
-                <i class="fa-solid fa-headphones"></i> 曲出し一覧
-              <% end %>
-            </li>
-            <li class="nav-item active mr-3">
-              <%= link_to users_path do %>
-                <i class="fa-solid fa-people-group"></i> ユーザー一覧
-              <% end %>
-            </li>
+            
+            <% if admin_signed_in? %>
+              <li class="nav-item active mr-3">
+                <%= link_to admin_top_path do %>
+                  <i class="fa-solid fa-headphones"></i> 曲出し一覧
+                <% end %>
+              </li>
+              <li class="nav-item active mr-3">
+                <%= link_to admin_top_path do %>
+                  <i class="fa-solid fa-people-group"></i> ユーザー一覧
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item active mr-3">
+                <%= link_to musics_path do %>
+                  <i class="fa-solid fa-headphones"></i> 曲出し一覧
+                <% end %>
+              </li>
+              <li class="nav-item active mr-3">
+                <%= link_to users_path do %>
+                  <i class="fa-solid fa-people-group"></i> ユーザー一覧
+                <% end %>
+              </li>
+            <% end %>
           </ul>
 
           <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
+            <% if admin_signed_in? %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %>
+                <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+              <% end %>
+            <% elsif user_signed_in? %>
               <li class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %>
                   <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
