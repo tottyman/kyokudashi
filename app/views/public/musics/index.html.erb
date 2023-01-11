@@ -16,16 +16,30 @@
           <% @musics.each do |music| %>
             <tr class="bg-light">
               <td class="col-auto">
-                <%= music.user.nickname %>
+                <%= link_to music_path(music) do %>
+                  <%= music.user.nickname %>
+                <% end %>
               </td>
               <td class="col-auto">
-                <%= music.band_name %>
+                <% if music.status == false %>
+                  <%= music.band_name %>
+                <% else %>
+                  当日お楽しみに！
+                <% end %>
               </td>
-               <td class="col-auto">
-                <%= music.song1_name %>
+              <td class="col-auto">
+                <% if music.status == false %>
+                  <%= music.song1_name %>
+                <% else %>
+                  当日お楽しみに！
+                <% end %>
               </td>
-               <td class="col-auto">
-                <%= music.song2_name %>
+              <td class="col-auto">
+                <% if music.status == false %>
+                  <%= music.song2_name %>
+                <% else %>
+                  当日お楽しみに！
+                <% end %>
               </td>
             </tr>
           <% end %>

@@ -45,18 +45,18 @@
               <% else %>
               <% end %>
             </li>
-            <li class="nav-item active mr-3">
+            <li class="nav-item active mr-5">
               <% if current_user.present? %>
                 <% if current_user.musics.exists? %>
                   <% @music = Music.where(user_id: current_user.id) %>
                   <% @music.each do |music| %>
                     <%= link_to music_path(music.id) do %>
-                      マイ曲出し
+                      <i class="fa-solid fa-music"></i> マイ曲出し
                     <% end %>
                   <% end %>
                 <% else %>
                   <%= link_to new_music_path do %>
-                    曲出し
+                    <i class="fa-solid fa-music"></i> 曲出し
                   <% end %>
                 <% end %>
               <% else %>
@@ -64,7 +64,12 @@
             </li>
             <li class="nav-item active mr-3">
               <%= link_to musics_path do %>
-                曲出し一覧
+                <i class="fa-solid fa-headphones"></i> 曲出し一覧
+              <% end %>
+            </li>
+            <li class="nav-item active mr-3">
+              <%= link_to users_path do %>
+                <i class="fa-solid fa-people-group"></i> ユーザー一覧
               <% end %>
             </li>
           </ul>

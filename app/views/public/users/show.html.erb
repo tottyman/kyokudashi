@@ -1,4 +1,4 @@
-<h2 class="head-line title_h2 text-center"><b><%= current_user.name %>さん ユーザー詳細</b></h2>
+<h2 class="head-line title_h2 text-center"><b><%= @user.nickname %>さん ユーザー詳細</b></h2>
 <div class="container">
   <div class="row">
     <div class="col-8 text-center mx-auto p-5">
@@ -22,7 +22,7 @@
               <% end %>
             </td>
           </tr>
-          
+
           <tr class="bg-light">
             <td class="col-auto">
               氏名
@@ -46,7 +46,11 @@
               メールアドレス
             </td>
             <td class="col-auto">
-              <%= @user.email %>
+              <% if @user.id == current_user.id %>
+                <%= @user.email %>
+              <% else %>
+                非公開
+              <% end %>
             </td>
           </tr>
 
@@ -61,16 +65,17 @@
 
         </tbody>
       </table>
-
-      <div class="text-center p-3">
-        <%= link_to edit_user_path(@user), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
-          <b>編集</b>
-        <% end %>
-        <%= link_to user_path(@user), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
-          <b>消去</b>
-        <% end %>
-      </div>
-
+      <% if @user.id == current_user.id %>
+        <div class="text-center p-3">
+          <%= link_to edit_user_path(@user), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
+            <b>編集</b>
+          <% end %>
+          <%= link_to user_path(@user), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
+            <b>消去</b>
+          <% end %>
+        </div>
+      <% else %>
+      <% end %>
     </div>
   </div>
 </div>

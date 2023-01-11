@@ -22,7 +22,9 @@
                 <% end %>
               </td>
               <td class="col-auto">
-                <%= user.nickname %>
+                <%= link_to user_path(user) do %>
+                  <%= user.nickname %>
+                <% end %>
               </td>
                <td class="col-auto">
                 <%= user.introduction %>
