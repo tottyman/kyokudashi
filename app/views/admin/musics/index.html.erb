@@ -2,44 +2,48 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8 text-center mx-auto p-5">
+    <div class="col-12 text-center mx-auto p-5">
       <table class="table table-hover table-bordered table-condensed">
         <thead>
           <tr class="text-light bg-dark">
             <th>ユーザー</th>
             <th>バンド名</th>
             <th>①曲名</th>
+            <th>①曲時間</th>
             <th>②曲名</th>
+            <th>②曲時間</th>
+            <th>マイク本数</th>
+            <th>備考</th>
           </tr>
         </thead>
         <tbody>
           <% @musics.each do |music| %>
             <tr class="bg-light">
               <td class="col-auto">
-                <%= link_to music_path(music) do %>
+                <%= link_to admin_music_path(music) do %>
                   <%= music.user.nickname %>
                 <% end %>
               </td>
               <td class="col-auto">
-                <% if music.status == false %>
                   <%= music.band_name %>
-                <% else %>
-                  当日お楽しみに！
-                <% end %>
               </td>
               <td class="col-auto">
-                <% if music.status == false %>
                   <%= music.song1_name %>
-                <% else %>
-                  当日お楽しみに！
-                <% end %>
               </td>
               <td class="col-auto">
-                <% if music.status == false %>
+                  <%= music.song1_time %>
+              </td>
+              <td class="col-auto">
                   <%= music.song2_name %>
-                <% else %>
-                  当日お楽しみに！
-                <% end %>
+              </td>
+              <td class="col-auto">
+                  <%= music.song2_time %>
+              </td>
+              <td class="col-auto">
+                  <%= music.mike_number %>
+              </td>
+              <td class="col-auto">
+                  <%= music.other %>
               </td>
             </tr>
           <% end %>

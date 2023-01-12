@@ -1,0 +1,100 @@
+<h2 class="head-line title_h2 text-center"><b><%= @music.user.nickname %>さん 曲出し詳細</b></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-8 text-center mx-auto p-5">
+      <table class="table table-hover table-bordered table-condensed">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>曲出し</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-light">
+            <td class="col-auto">
+              ①曲名
+            </td>
+            <td class="col-auto">
+              <%= @music.song1_name %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              ①曲時間
+            </td>
+            <td class="col-auto">
+              <%= @music.song1_time %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              ②曲名
+            </td>
+            <td class="col-auto">
+              <%= @music.song2_name %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              ②曲時間
+            </td>
+            <td class="col-auto">
+              <%= @music.song2_time %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              バンド名
+            </td>
+            <td class="col-auto">
+              <%= @music.band_name %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              マイク使用本数
+            </td>
+            <td class="col-auto">
+              <%= @music.mike_number %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              公開設定
+            </td>
+            <td class="col-auto">
+              <% if @music.status == false %>
+                公開
+              <% else %>
+                非公開
+              <% end %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              備考・要望
+            </td>
+            <td class="col-auto">
+              <%= @music.other %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center p-3">
+        <%= link_to edit_admin_music_path(@music), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
+          <b>編集</b>
+        <% end %>
+        <%= link_to admin_music_path(@music), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
+          <b>消去</b>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

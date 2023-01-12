@@ -8,5 +8,8 @@ class User < ApplicationRecord
   
   has_one_attached :image
   
+  validates :email, presence: true
+  validates :name, presence: true
+  validates :nickname, presence: true
 
 end

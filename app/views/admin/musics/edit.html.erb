@@ -1,8 +1,10 @@
+<%= render 'layouts/error_messages', model: @music %>
+
 <h2 class="head-line title_h2 text-center"><b><%= @music.user.nickname %>さん　曲出し編集</b></h2>
 <div class="container">
   <div class="row">
 		<div class="col-6 mx-auto p-3">
-		  <%= form_with model: @music, url: music_path, method: :patch do |f| %>
+		  <%= form_with model: @music, url: admin_music_path, method: :patch do |f| %>
 			<div class="form-group col-12 p-1">
 	  	      <%= f.label :"①曲名", class: "col-5" %>
 	    	  <%= f.text_field :song1_name %>

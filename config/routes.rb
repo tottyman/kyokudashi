@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     patch 'top' => 'homes#update'
     delete 'top' => 'homes#destroy'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :musics, only: [:index, :show, :edit, :update, :destroy]
   end
   
 end

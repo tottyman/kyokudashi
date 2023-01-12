@@ -1,5 +1,7 @@
 class Admin::HomesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def top
     @admin = Admin.find(1)
   end
@@ -12,7 +14,7 @@ class Admin::HomesController < ApplicationController
 
   def destroy
     Music.destroy_all
-    redirect_to admin_top_path
+    redirect_to admin_musics_path
   end
 
   private

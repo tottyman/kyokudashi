@@ -1,20 +1,6 @@
-class Public::MusicsController < ApplicationController
+class Admin::MusicsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
-
-  def new
-    @music = Music.new
-  end
-
-  def create
-    @music = Music.new(music_params)
-    @music.user_id = current_user.id
-    if @music.save
-      redirect_to musics_path
-    else
-      render :new
-    end
-  end
+  before_action :authenticate_admin!
 
   def index
     @musics = Music.all
@@ -31,7 +17,7 @@ class Public::MusicsController < ApplicationController
   def update
     @music = Music.find(params[:id])
     if @music.update(music_params)
-      redirect_to music_path(@music)
+      redirect_to admin_music_path(@music)
     else
       render :edit
     end
@@ -40,7 +26,7 @@ class Public::MusicsController < ApplicationController
   def destroy
     @music = Music.find(params[:id])
     @music.destroy
-    redirect_to new_music_path
+    redirect_to admin_musics_path
   end
 
   private
