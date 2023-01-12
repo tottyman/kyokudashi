@@ -1,0 +1,52 @@
+<h2 class="text-center"><b>ユーザー 一覧</b></h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center mx-auto p-5">
+      <table class="table table-hover table-bordered table-condensed">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>プロフィール画像</th>
+            <th>氏名</th>
+            <th>表示名</th>
+            <th>メールアドレス</th>
+            <th>自己紹介文</th>
+            <th>アカウント作成日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class="bg-light">
+              <td class="col-auto">
+                <% if user.image.attached? %>
+                  <%= image_tag user.image, size: "60x60" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "60x60" %>
+                <% end %>
+              </td>
+              <td class="col-auto">
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td class="col-auto">
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.nickname %>
+                <% end %>
+              </td>
+              <td class="col-auto">
+                <%= user.email %>
+              </td>
+              <td class="col-auto">
+                <%= user.introduction %>
+              </td>
+              <td class="col-auto">
+                <%= user.created_at.strftime("%m/%d") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<h2 class="head-line title_h2 text-center"><b><%= @user.nickname %>さん ユーザー詳細</b></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-8 text-center mx-auto p-5">
+      <table class="table table-hover table-bordered table-condensed">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>ユーザー情報</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-light">
+            <td class="col-auto">
+              プロフィール画像
+            </td>
+            <td class="col-auto">
+              <% if @user.image.attached? %>
+                <%= image_tag @user.image, size: "60x60" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "60x60" %>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              氏名
+            </td>
+            <td class="col-auto">
+              <%= @user.name %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              表示名
+            </td>
+            <td class="col-auto">
+              <%= @user.nickname %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              メールアドレス
+            </td>
+            <td class="col-auto">
+              <%= @user.email %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              紹介文
+            </td>
+            <td class="col-auto">
+              <%= @user.introduction %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="text-center p-3">
+        <%= link_to edit_admin_user_path(@user), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
+          <b>編集</b>
+        <% end %>
+        <%= link_to admin_user_path(@user), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
+          <b>消去</b>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

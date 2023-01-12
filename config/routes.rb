@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top'
     patch 'top' => 'homes#update'
     delete 'top' => 'homes#destroy'
-    
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
   
 end

@@ -53,7 +53,7 @@
               <% else %>
               <% end %>
             </li>
-            
+
             <li class="nav-item active mr-5">
               <% if current_user.present? %>
                 <% if current_user.musics.exists? %>
@@ -71,7 +71,7 @@
               <% else %>
               <% end %>
             </li>
-            
+
             <% if admin_signed_in? %>
               <li class="nav-item active mr-3">
                 <%= link_to admin_top_path do %>
@@ -79,7 +79,7 @@
                 <% end %>
               </li>
               <li class="nav-item active mr-3">
-                <%= link_to admin_top_path do %>
+                <%= link_to admin_users_path do %>
                   <i class="fa-solid fa-people-group"></i> ユーザー一覧
                 <% end %>
               </li>
