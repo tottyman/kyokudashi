@@ -3,8 +3,31 @@
 
 body {
   font-family: "MS Pゴシック" ;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  background: #DDDDDD;
+  flex: 1;
+  padding: 40px 0;
+}
+
+header {
+  background: #000033;
+}
+
+footer {
+  background: #777777;
 }
 
 .field_with_errors {
   display: contents;
+}
+
+.link {
+    text-decoration: none;
+    color: white ;
 }

@@ -19,5 +19,12 @@
       <% end %>
     <% end %>
   <% else %>
+    <h4 class="text-primary">曲出しをするには <b>新規登録/ログイン</b> をお願いします。</h4>
+    <%= link_to new_user_registration_path, class: "btn btn-lg bg-dark rounded-pill text-info mt-4" do %>
+      <i class="fa-solid fa-user-plus"></i> 新規登録
+    <% end %>
+    <%= link_to new_user_session_path, class: "btn btn-lg bg-dark rounded-pill text-success mt-4" do %>
+      <i class="fa-solid fa-right-to-bracket"></i> ログイン
+    <% end %>
   <% end %>
 </div>

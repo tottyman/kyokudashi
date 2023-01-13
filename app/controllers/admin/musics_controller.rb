@@ -13,6 +13,9 @@ class Admin::MusicsController < ApplicationController
   def edit
     @music = Music.find(params[:id])
   end
+  
+  def timetable
+  end
 
   def update
     @music = Music.find(params[:id])
@@ -28,7 +31,7 @@ class Admin::MusicsController < ApplicationController
     @music.destroy
     redirect_to admin_musics_path
   end
-
+  
   private
 
   def music_params

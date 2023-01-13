@@ -6,6 +6,5 @@ class Music < ApplicationRecord
   validates :song1_time, presence: true
   validates :band_name, presence: true
   validates :mike_number, presence: true
-  validates :status, presence: true
   
 end

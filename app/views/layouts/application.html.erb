@@ -15,30 +15,30 @@
   <body>
     <header>
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 pt-3 pb-3 shadow">
+      <nav class="navbar navbar-expand-lg navbar-dark pt-2 pb-2 shadow">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="navbar-brand text-light ml-4">
+        <div class="navbar-brand text-light ml-4 mr-5">
           <% if admin_signed_in? %>
             <%= link_to admin_top_path do %>
-              <%= image_tag 'logo.png', :size =>'60x50' %>
+              <%= image_tag 'logo.png', :size =>'55x45' %>
             <% end %>
           <% else %>
             <%= link_to root_path do %>
-              <%= image_tag 'logo.png', :size =>'60x50' %>
+              <%= image_tag 'logo.png', :size =>'55x45' %>
             <% end %>
           <% end %>
         </div>
 
         <div class="navbar-brand text-light ml-5">
           <% if admin_signed_in? %>
-            <p>管理者アカウント</p>
+            <b>管理者アカウント</b>
           <% elsif current_user.present? %>
-            <p>こんにちは、<%= current_user.name %>さん！</p>
+            <b>こんにちは、<%= current_user.name %>さん！</b>
           <% else %>
-            <p>こんにちは、ゲストさん！</p>
+            <b>こんにちは、ゲストさん！</b>
           <% end %>
         </div>
 
@@ -47,7 +47,7 @@
           <ul class="navbar-nav ml-auto mr-auto">
             <li class="nav-item active mr-3">
               <% if current_user.present? %>
-                <%= link_to user_path(current_user.id) do %>
+                <%= link_to user_path(current_user.id), class: "link" do %>
                   <i class="fa-solid fa-user"></i> マイページ
                 <% end %>
               <% else %>
@@ -59,12 +59,12 @@
                 <% if current_user.musics.exists? %>
                   <% @music = Music.where(user_id: current_user.id) %>
                   <% @music.each do |music| %>
-                    <%= link_to music_path(music.id) do %>
+                    <%= link_to music_path(music.id), class: "link" do %>
                       <i class="fa-solid fa-music"></i> マイ曲出し
                     <% end %>
                   <% end %>
                 <% else %>
-                  <%= link_to new_music_path do %>
+                  <%= link_to new_music_path, class: "link" do %>
                     <i class="fa-solid fa-music"></i> 曲出し
                   <% end %>
                 <% end %>
@@ -74,23 +74,28 @@
 
             <% if admin_signed_in? %>
               <li class="nav-item active mr-3">
-                <%= link_to admin_musics_path do %>
+                <%= link_to admin_musics_path, class: "link" do %>
                   <i class="fa-solid fa-headphones"></i> 曲出し一覧
                 <% end %>
               </li>
-              <li class="nav-item active mr-3">
-                <%= link_to admin_users_path do %>
+              <li class="nav-item active mr-5">
+                <%= link_to admin_users_path, class: "link" do %>
                   <i class="fa-solid fa-people-group"></i> ユーザー一覧
+                <% end %>
+              </li>
+              <li class="nav-item active ml-3">
+                <%= link_to timetable_admin_musics_path, class: "link" do %>
+                  <i class="fa-regular fa-clock"></i> タイムテーブル
                 <% end %>
               </li>
             <% else %>
               <li class="nav-item active mr-3">
-                <%= link_to musics_path do %>
+                <%= link_to musics_path, class: "link" do %>
                   <i class="fa-solid fa-headphones"></i> 曲出し一覧
                 <% end %>
               </li>
               <li class="nav-item active mr-3">
-                <%= link_to users_path do %>
+                <%= link_to users_path, class: "link" do %>
                   <i class="fa-solid fa-people-group"></i> ユーザー一覧
                 <% end %>
               </li>
@@ -131,7 +136,7 @@
     </main>
 
     <footer>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 pt-3 pb-3">
+      <nav class="navbar navbar-expand-lg navbar-dark pt-3 pb-1">
         <div class="container">
         	<div class="row">
           	<div class="mx-auto text-light">
