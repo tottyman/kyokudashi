@@ -3,8 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  has_many :members
+  has_many :bands, through: :members
+  
   has_many :musics
+  has_many :bands, through: :musics
   
   has_one_attached :image
   

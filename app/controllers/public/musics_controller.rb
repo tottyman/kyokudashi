@@ -4,6 +4,8 @@ class Public::MusicsController < ApplicationController
 
   def new
     @music = Music.new
+    @bands = Band.all
+    @count = current_user.musics.count
   end
 
   def create
@@ -26,6 +28,7 @@ class Public::MusicsController < ApplicationController
 
   def edit
     @music = Music.find(params[:id])
+    @bands = Band.all
   end
 
   def update
@@ -46,7 +49,7 @@ class Public::MusicsController < ApplicationController
   private
 
   def music_params
-    params.require(:music).permit(:user_id, :song1_name, :song1_time, :song2_name, :song2_time, :band_name, :mike_number, :status, :other)
+    params.require(:music).permit(:user_id, :band_id, :music_name, :music_time, :status)
   end
 
 end

@@ -8,8 +8,7 @@
           <tr class="text-light bg-dark">
             <th>ユーザー</th>
             <th>バンド名</th>
-            <th>①曲名</th>
-            <th>②曲名</th>
+            <th>曲名</th>
           </tr>
         </thead>
         <tbody>
@@ -21,22 +20,11 @@
                 <% end %>
               </td>
               <td class="col-auto">
-                <% if music.status == false %>
-                  <%= music.band_name %>
-                <% else %>
-                  当日お楽しみに！
-                <% end %>
+                <%= music.band.band_name %>
               </td>
               <td class="col-auto">
                 <% if music.status == false %>
-                  <%= music.song1_name %>
-                <% else %>
-                  当日お楽しみに！
-                <% end %>
-              </td>
-              <td class="col-auto">
-                <% if music.status == false %>
-                  <%= music.song2_name %>
+                  <%= music.music_name %>
                 <% else %>
                   当日お楽しみに！
                 <% end %>

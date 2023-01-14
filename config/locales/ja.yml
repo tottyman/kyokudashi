@@ -6,6 +6,9 @@ ja:
         song1_time: ①曲時間
         band_name: 出場バンド名
         mike_number: 使用マイク本数
+      band:
+        band_name: バンド名
+        mike_number: 使用マイク本数
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

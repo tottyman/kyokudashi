@@ -6,17 +6,11 @@
 
 <div class="text-center p-5">
   <% if current_user.present? %>
-    <% @music = Music.where(user_id: current_user.id) %>
-    <% if current_user.musics.exists? %>
-      <% @music.each do |music| %>
-        <%= link_to edit_music_path(music.id), class: "btn btn-lg bg-dark rounded-pill text-info" do %>
-          <b>曲出しをする</b>
-        <% end %>
-      <% end %>
-    <% else %>
-      <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
-        <b>曲出しをする</b>
-      <% end %>
+    <%= link_to bands_path, class: "btn btn-lg bg-dark rounded-pill text-info mr-5" do %>
+      <b>①バンド登録</b>
+    <% end %>
+    <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
+      <b>②曲出し</b>
     <% end %>
   <% else %>
     <h4 class="text-primary">曲出しをするには <b>新規登録/ログイン</b> をお願いします。</h4>

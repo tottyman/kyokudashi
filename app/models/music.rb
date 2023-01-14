@@ -1,10 +1,10 @@
 class Music < ApplicationRecord
   
   belongs_to :user
+  belongs_to :band
   
-  validates :song1_name, presence: true
-  validates :song1_time, presence: true
-  validates :band_name, presence: true
-  validates :mike_number, presence: true
+  validates :music_name, presence: true
+  validates :music_time, presence: true
+  
   
 end

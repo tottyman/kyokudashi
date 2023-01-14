@@ -8,12 +8,8 @@
           <tr class="text-light bg-dark">
             <th>ユーザー</th>
             <th>バンド名</th>
-            <th>①曲名</th>
-            <th>①曲時間</th>
-            <th>②曲名</th>
-            <th>②曲時間</th>
-            <th>マイク本数</th>
-            <th>備考</th>
+            <th>曲名</th>
+            <th>曲時間</th>
           </tr>
         </thead>
         <tbody>
@@ -25,25 +21,13 @@
                 <% end %>
               </td>
               <td class="col-auto">
-                  <%= music.band_name %>
+                <%= music.band.band_name %>
               </td>
               <td class="col-auto">
-                  <%= music.song1_name %>
+                <%= music.music_name %>
               </td>
               <td class="col-auto">
-                  <%= music.song1_time %>
-              </td>
-              <td class="col-auto">
-                  <%= music.song2_name %>
-              </td>
-              <td class="col-auto">
-                  <%= music.song2_time %>
-              </td>
-              <td class="col-auto">
-                  <%= music.mike_number %>
-              </td>
-              <td class="col-auto">
-                  <%= music.other %>
+                <%= music.music_time %>
               </td>
             </tr>
           <% end %>

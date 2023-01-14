@@ -12,37 +12,19 @@
         <tbody>
           <tr class="bg-light">
             <td class="col-auto">
-              ①曲名
+              曲名
             </td>
             <td class="col-auto">
-              <%= @music.song1_name %>
-            </td>
-          </tr>
-
-          <tr class="bg-light">
-            <td class="col-auto">
-              ①曲時間
-            </td>
-            <td class="col-auto">
-              <%= @music.song1_time %>
+              <%= @music.music_name %>
             </td>
           </tr>
 
           <tr class="bg-light">
             <td class="col-auto">
-              ②曲名
+              曲時間
             </td>
             <td class="col-auto">
-              <%= @music.song2_name %>
-            </td>
-          </tr>
-
-          <tr class="bg-light">
-            <td class="col-auto">
-              ②曲時間
-            </td>
-            <td class="col-auto">
-              <%= @music.song2_time %>
+              <%= @music.music_time %>
             </td>
           </tr>
 
@@ -51,16 +33,7 @@
               バンド名
             </td>
             <td class="col-auto">
-              <%= @music.band_name %>
-            </td>
-          </tr>
-
-          <tr class="bg-light">
-            <td class="col-auto">
-              マイク使用本数
-            </td>
-            <td class="col-auto">
-              <%= @music.mike_number %>
+              <%= @music.band.band_name %>
             </td>
           </tr>
 
@@ -77,14 +50,6 @@
             </td>
           </tr>
 
-          <tr class="bg-light">
-            <td class="col-auto">
-              備考・要望
-            </td>
-            <td class="col-auto">
-              <%= @music.other %>
-            </td>
-          </tr>
         </tbody>
       </table>
       <div class="text-center p-3">

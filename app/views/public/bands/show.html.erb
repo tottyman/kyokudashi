@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7 text-center mx-auto p-5">
+      <h2 class="p-3"><b><%= @band.band_name %> 詳細</b></h2>
+      <table class="table table-hover table-bordered table-condensed">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-light">
+            <td class="col-auto">
+              バンド名
+            </td>
+            <td class="col-auto">
+              <%= @band.band_name %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              使用マイク本数
+            </td>
+            <td class="col-auto">
+              <%= @band.mike_number %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              備考
+            </td>
+            <td class="col-auto">
+              <%= @band.other %>
+            </td>
+          </tr>
+
+          <tr class="bg-light">
+            <td class="col-auto">
+              メンバー
+            </td>
+            <td class="col-auto">
+              <% if @band.members.blank? %>
+                メンバーがいません
+              <% else %>
+                <% @band.members.each do |member| %>
+                  <% if member.user.present? %>
+                    <%= member.user.nickname %>　<%= link_to "消去", band_member_path(user_id: member.user_id, band_id: @band), method: :delete %></br>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="text-center p-3">
+        <%= link_to edit_band_path(@band), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
+          <b>編集</b>
+        <% end %>
+        <%= link_to band_path(@band), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
+          <b>消去</b>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-5 text-center mx-auto p-5">
+      <h2 class="p-3"><b>メンバー追加</b></h2>
+      <div class="form-group col-12 p-2">
+        <%= form_with model: @member, url: band_members_path(@band), method: :post do |f| %>
+          <%= f.select :user_id, options_from_collection_for_select(@users, :id, :nickname), include_blank: "選択してください" %>
+          <%= f.submit "追加", class: "btn btn-info col-xs-5" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

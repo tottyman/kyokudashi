@@ -76,6 +76,31 @@
         </div>
       <% else %>
       <% end %>
+  	</div>
+
+  	<div class="col-4 text-center mx-auto p-5">
+      <table class="table table-hover table-bordered table-condensed">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>出場バンド</th>
+            <th>メンバー数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @members.each do |member| %>
+            <tr class="bg-light">
+              <td class="col-auto">
+                <%= link_to band_path(member.band.id) do %>
+                  <%= member.band.band_name %>
+                <% end %>
+              </td>
+              <td class="col-auto">
+                <i class="fa-solid fa-users"></i>　<%= member.band.members.count %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

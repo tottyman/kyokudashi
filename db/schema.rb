@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_10_071625) do
+ActiveRecord::Schema.define(version: 2023_01_14_032130) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2023_01_10_071625) do
     t.string "encrypted_password", default: "", null: false
     t.date "event_date", null: false
     t.date "deadline", null: false
+    t.time "start_time", null: false
+    t.time "finish_time", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -54,16 +56,27 @@ ActiveRecord::Schema.define(version: 2023_01_10_071625) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "musics", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "song1_name", null: false
-    t.integer "song1_time", null: false
-    t.string "song2_name"
-    t.integer "song2_time"
+  create_table "bands", force: :cascade do |t|
     t.string "band_name", null: false
     t.integer "mike_number", null: false
-    t.boolean "status", default: false, null: false
     t.text "other"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "band_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "band_id", null: false
+    t.string "music_name", null: false
+    t.integer "music_time", null: false
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -8,6 +8,8 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.date :event_date, null: false
       t.date :deadline, null: false
+      t.time :start_time, null: false
+      t.time :finish_time, null: false
 
       ## Recoverable
       t.string   :reset_password_token

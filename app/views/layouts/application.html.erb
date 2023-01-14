@@ -32,7 +32,7 @@
           <% end %>
         </div>
 
-        <div class="navbar-brand text-light ml-5">
+        <div class="navbar-brand text-light ml-3">
           <% if admin_signed_in? %>
             <b>管理者アカウント</b>
           <% elsif current_user.present? %>
@@ -54,23 +54,22 @@
               <% end %>
             </li>
 
-            <li class="nav-item active mr-5">
-              <% if current_user.present? %>
-                <% if current_user.musics.exists? %>
-                  <% @music = Music.where(user_id: current_user.id) %>
-                  <% @music.each do |music| %>
-                    <%= link_to music_path(music.id), class: "link" do %>
-                      <i class="fa-solid fa-music"></i> マイ曲出し
-                    <% end %>
-                  <% end %>
-                <% else %>
-                  <%= link_to new_music_path, class: "link" do %>
-                    <i class="fa-solid fa-music"></i> 曲出し
+            <% if current_user.present? %>
+              <li class="nav-item active mr-2">
+                <%= link_to new_music_path, class: "link" do %>
+                  <i class="fa-solid fa-music"></i> 曲出し
+                <% end %>
+              </li>
+              <li class="nav-item active mr-5">
+                <% @music = Music.where(user_id: current_user.id) %>
+                <% @music.each do |music| %>
+                  <%= link_to music_path(music.id), class: "link" do %>
+                    <i class="fa-solid fa-music"></i> マイ曲出し
                   <% end %>
                 <% end %>
-              <% else %>
-              <% end %>
-            </li>
+              </li>
+            <% else %>
+            <% end %>
 
             <% if admin_signed_in? %>
               <li class="nav-item active mr-3">
@@ -78,9 +77,14 @@
                   <i class="fa-solid fa-headphones"></i> 曲出し一覧
                 <% end %>
               </li>
-              <li class="nav-item active mr-5">
+              <li class="nav-item active mr-3">
                 <%= link_to admin_users_path, class: "link" do %>
                   <i class="fa-solid fa-people-group"></i> ユーザー一覧
+                <% end %>
+              </li>
+              <li class="nav-item active mr-5">
+                <%= link_to admin_bands_path, class: "link" do %>
+                  <i class="fa-solid fa-guitar"></i> バンド一覧
                 <% end %>
               </li>
               <li class="nav-item active ml-3">
@@ -97,6 +101,11 @@
               <li class="nav-item active mr-3">
                 <%= link_to users_path, class: "link" do %>
                   <i class="fa-solid fa-people-group"></i> ユーザー一覧
+                <% end %>
+              </li>
+              <li class="nav-item active mr-3">
+                <%= link_to bands_path, class: "link" do %>
+                  <i class="fa-solid fa-guitar"></i> バンド一覧
                 <% end %>
               </li>
             <% end %>

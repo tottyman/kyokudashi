@@ -12,6 +12,7 @@ class Admin::MusicsController < ApplicationController
 
   def edit
     @music = Music.find(params[:id])
+    @bands = Band.all
   end
   
   def timetable
@@ -35,7 +36,7 @@ class Admin::MusicsController < ApplicationController
   private
 
   def music_params
-    params.require(:music).permit(:user_id, :song1_name, :song1_time, :song2_name, :song2_time, :band_name, :mike_number, :status, :other)
+    params.require(:music).permit(:user_id, :band_id, :music_name, :music_time, :status)
   end
 
 end
