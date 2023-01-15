@@ -14,13 +14,14 @@ class Admin::HomesController < ApplicationController
 
   def destroy
     Music.destroy_all
+    Band.destroy_all
     redirect_to admin_musics_path
   end
 
   private
 
   def admin_params
-    params.require(:admin).permit(:event_date, :deadline)
+    params.require(:admin).permit(:event_date, :deadline, :start_time, :finish_time)
   end
 
 end

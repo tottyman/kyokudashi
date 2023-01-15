@@ -16,6 +16,8 @@ class Admin::MusicsController < ApplicationController
   end
   
   def timetable
+    @bands = Band.all
+    
   end
 
   def update
