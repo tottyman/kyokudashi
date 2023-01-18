@@ -19,7 +19,7 @@ class Admin::MusicsController < ApplicationController
     @bands = Band.order("linenumber")
     @admin = Admin.find(1)
     @admintime = @admin.start_time
-    @conversion_time = 900
+    @conversion_time = @admin.conversion_time*60
   end
 
 

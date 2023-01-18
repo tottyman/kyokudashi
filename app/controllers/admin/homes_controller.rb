@@ -21,7 +21,7 @@ class Admin::HomesController < ApplicationController
   private
 
   def admin_params
-    params.require(:admin).permit(:event_date, :deadline, :start_time, :finish_time)
+    params.require(:admin).permit(:event_date, :deadline, :start_time, :finish_time, :conversion_time)
   end
 
 end

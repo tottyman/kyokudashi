@@ -10,6 +10,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.date :deadline, null: false
       t.time :start_time, null: false
       t.time :finish_time, null: false
+      t.integer :conversion_time, null: false
 
       ## Recoverable
       t.string   :reset_password_token
