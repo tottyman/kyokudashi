@@ -1,7 +1,7 @@
 class Admin::BandsController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
+
   def index
     @band = Band.new
     @bands = Band.all
@@ -19,12 +19,27 @@ class Admin::BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
+    @band.linenumber = Band.count + 1
     if @band.save
       redirect_to admin_bands_path
     else
       @bands = Band.all
       render :index
     end
+  end
+
+  def change
+    @band = Band.find(params[:id])
+    @before_band = Band.where("linenumber < ?", @band.linenumber).order("linenumber desc").first(1)
+      @before_band.each do |band|
+        @before_linenumber = @band.linenumber
+        @target_linenumber = band.linenumber
+        band.linenumber = @before_linenumber
+        @band.linenumber = @target_linenumber
+        @band.update(band_linenumber_params)
+        band.update(band_linenumber_params)
+      end
+    redirect_to timetable_admin_musics_path
   end
 
   def update
@@ -46,7 +61,11 @@ class Admin::BandsController < ApplicationController
   private
 
   def band_params
-    params.require(:band).permit(:band_name, :mike_number, :other)
+    params.require(:band).permit(:band_name, :mike_number, :other, :linenumber)
   end
-  
+
+   def band_linenumber_params
+    params.permit(:linenumber)
+  end
+
 end

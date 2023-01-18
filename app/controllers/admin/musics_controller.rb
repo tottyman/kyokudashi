@@ -14,11 +14,15 @@ class Admin::MusicsController < ApplicationController
     @music = Music.find(params[:id])
     @bands = Band.all
   end
-  
+
   def timetable
-    @bands = Band.all
-    
+    @bands = Band.order("linenumber")
+    @admin = Admin.find(1)
+    @admintime = @admin.start_time
+    @conversion_time = 900
   end
+
+
 
   def update
     @music = Music.find(params[:id])
@@ -34,7 +38,7 @@ class Admin::MusicsController < ApplicationController
     @music.destroy
     redirect_to admin_musics_path
   end
-  
+
   private
 
   def music_params

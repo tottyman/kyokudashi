@@ -19,6 +19,7 @@ class Public::BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
+    @band.linenumber = Band.count + 1
     if @band.save
       redirect_to bands_path
     else
@@ -46,7 +47,7 @@ class Public::BandsController < ApplicationController
   private
 
   def band_params
-    params.require(:band).permit(:band_name, :mike_number, :other)
+    params.require(:band).permit(:band_name, :mike_number, :other, :linenumber)
   end
 
 end

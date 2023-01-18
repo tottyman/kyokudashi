@@ -4,6 +4,7 @@ class CreateBands < ActiveRecord::Migration[6.1]
       t.string :band_name, null: false
       t.integer :mike_number, null: false
       t.text :other
+      t.integer :linenumber, null: false
       t.timestamps
     end
   end

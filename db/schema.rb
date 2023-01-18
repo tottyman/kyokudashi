@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2023_01_14_032130) do
     t.string "band_name", null: false
     t.integer "mike_number", null: false
     t.text "other"
+    t.integer "linenumber", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     delete 'top' => 'homes#destroy'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :bands, only: [:index, :show, :edit, :create, :update, :destroy] do
+      member do
+        patch 'change_up'
+      end
       resources :members, only: [:create, :destroy]
     end
     resources :musics, only: [:index, :show, :edit, :update, :destroy] do

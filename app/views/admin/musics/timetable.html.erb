@@ -3,5 +3,52 @@
 <div class="container">
   <div class="row">
     <div class="col-8 text-center mx-auto p-5">
-      <% @band.each do |band| %>
-        
+      <table class="table table-hover table-bordered table-condensed text-center">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>バンド名</th>
+            <th>メンバー数</th>
+            <th>バンド持ち時間</th>
+            <th>タイムスケジュール</th>
+            <th>並び替え</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @over_time = 0 %>
+          <% @bands.each_with_index do |band, idx| %>
+            <tr class="bg-light">
+              <td class="col-auto">
+                <%= link_to admin_band_path(band) do %>
+                  <%= band.band_name %>
+                <% end %>
+              </td>
+
+              <td class="col-auto">
+                <i class="fa-solid fa-users"></i>　<%= band.members.count %>
+              </td>
+
+              <td class="col-auto">
+                <%= (band.musics.sum(:music_time).to_i/5+1)*5 %>
+              </td>
+
+              <td class="col-auto">
+                <% require "active_support/time" %>
+                <% target_band_time = ((Band.find_by(linenumber: idx + 1).musics.sum(:music_time).to_i/5+1)*5)*60 + @conversion_time %>
+                <%= (@admintime + @over_time).strftime("%H:%M") %> ~
+                <%= (@admintime + @over_time + target_band_time).strftime("%H:%M") %>
+                <% @over_time = @over_time + target_band_time %>
+              </td>
+
+               <td class="col-auto">
+                <%= link_to change_admin_band_path(band), method: :patch do %>
+                  上へ
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  	</div>
+  </div>
+</div>
+
