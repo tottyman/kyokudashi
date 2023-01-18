@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :bands, only: [:index, :show, :edit, :create, :update, :destroy] do
       member do
         patch 'change_up'
+        patch 'change_down'
       end
       resources :members, only: [:create, :destroy]
     end

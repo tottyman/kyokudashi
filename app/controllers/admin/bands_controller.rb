@@ -28,9 +28,23 @@ class Admin::BandsController < ApplicationController
     end
   end
 
-  def change
+  def change_up
     @band = Band.find(params[:id])
     @before_band = Band.where("linenumber < ?", @band.linenumber).order("linenumber desc").first(1)
+      @before_band.each do |band|
+        @before_linenumber = @band.linenumber
+        @target_linenumber = band.linenumber
+        band.linenumber = @before_linenumber
+        @band.linenumber = @target_linenumber
+        @band.update(band_linenumber_params)
+        band.update(band_linenumber_params)
+      end
+    redirect_to timetable_admin_musics_path
+  end
+  
+  def change_down
+    @band = Band.find(params[:id])
+    @before_band = Band.where("linenumber > ?", @band.linenumber).order("linenumber").first(1)
       @before_band.each do |band|
         @before_linenumber = @band.linenumber
         @target_linenumber = band.linenumber

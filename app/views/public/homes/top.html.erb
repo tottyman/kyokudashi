@@ -1,5 +1,5 @@
 <h1 class="head-line title_h2 text-center p-5">
-  次回のライブは　<b><%= @admin.event_date.strftime("%m/%d") %></b>　です！<br/>
+  次回ライブ　<b><%= @admin.event_date.strftime("%m/%d") %></b>　<%= @admin.start_time.strftime("%H:%M") %> ~ <%= @admin.finish_time.strftime("%H:%M") %><br/>
   <br/>
   <b><%= @admin.deadline.strftime("%m/%d") %></b>　までに曲出しをお願いいたします！
 </h1>
@@ -10,7 +10,7 @@
       <b>①バンド登録</b>
     <% end %>
     <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
-      <b>②曲出し</b>
+      <b>　②曲出し　</b>
     <% end %>
   <% else %>
     <h4 class="text-primary">曲出しをするには <b>新規登録/ログイン</b> をお願いします。</h4>
