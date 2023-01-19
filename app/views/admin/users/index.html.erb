@@ -30,9 +30,7 @@
                 <% end %>
               </td>
               <td class="col-auto">
-                <%= link_to admin_user_path(user) do %>
-                  <%= user.nickname %>
-                <% end %>
+                <%= user.nickname %>
               </td>
               <td class="col-auto">
                 <%= user.email %>
@@ -47,6 +45,7 @@
           <% end %>
         </tbody>
       </table>
+    <%= paginate @users %>
     </div>
   </div>
 </div>

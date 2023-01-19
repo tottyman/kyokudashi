@@ -3,12 +3,12 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @members = Member.where(user_id: current_user.id)
+    @members = Member.where(user_id: @user.id)
   end
 
   def edit
