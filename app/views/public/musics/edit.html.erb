@@ -1,35 +1,37 @@
+<%= render 'layouts/error_messages', model: @music %>
+
 <h2 class="head-line title_h2 text-center"><b><%= @music.user.nickname %>さん　曲出し編集</b></h2>
 <div class="container">
   <div class="row">
-		<div class="col-6 mx-auto p-3">
-		  <%= form_with model: @music, url: music_path, method: :patch do |f| %>
-			<div class="form-group col-12 p-1">
-	      <%= f.label :"曲名", class: "col-5" %>
+	<div class="col-7 mx-auto pt-3">
+	  <%= form_with model: @music, url: music_path, method: :patch do |f| %>
+		<div class="form-group col-12 p-1">
+	      <%= f.label :"曲名", class: "col-6" %>
 	  	  <%= f.text_field :music_name %>
-			</div>
+		</div>
 
-			<div class="form-group col-12 p-1">
-	  	  <%= f.label :"曲時間(秒数切り上げ)", class: "col-5" %>
+		<div class="form-group col-12 p-1">
+	  	  <%= f.label :"曲時間", class: "col-6" %>
 	  	  <%= f.number_field :music_time, min: 1, max: 30 %>
-			</div>
+		</div>
 
-			<div class="form-group col-12 p-1">
-	      <%= f.label :"出場バンド名", class: "col-5" %>
-	  	  <%= f.select :band_id, options_from_collection_for_select(@bands, :id, :band_name), include_blank: "選択してください" %>
-			</div>
+		<div class="form-group col-12 p-1">
+	      <%= f.label :"出場バンド名", class: "col-6" %>
+	  	  <%= f.select :band_id, options_from_collection_for_select(@bands, :id, :band_name) %>
+		</div>
 
-			<div class="form-group col-12 p-1">
-	      <%= f.label :"公開設定", class: "col-5" %>
+		<div class="form-group col-12 p-1">
+	      <%= f.label :"公開設定", class: "col-6" %>
 	  	  <%= f.radio_button :status, "false" %>
 	  	  <%= f.label :"公開" %>
 	  	  <%= f.radio_button :status, "true" %>
 	  	  <%= f.label :"非公開" %>
-			</div>
-
-			<div class="actions text-center p-3">
-		  	<%= f.submit "編集内容をを登録", class: "btn btn-lg bg-dark rounded-pill text-success" %>
-			</div>
-		  <% end %>
 		</div>
+
+		<div class="actions text-center p-3">
+	  	  <%= f.submit "編集内容をを登録", class: "btn btn-lg bg-dark rounded-pill text-success" %>
+		</div>
+	  <% end %>
+	</div>
   </div>
 </div>

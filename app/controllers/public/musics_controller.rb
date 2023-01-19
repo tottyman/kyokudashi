@@ -19,11 +19,13 @@ class Public::MusicsController < ApplicationController
   end
 
   def index
-    @musics = Music.all
+    @musics = Music.page(params[:page])
   end
 
   def show
-    @music = Music.find(params[:id])
+    music = Music.find(params[:id])
+    @music = Music.find_by(user_id: music.user_id)
+    @musics = Music.where(user_id: music.user_id)
   end
 
   def edit
@@ -36,6 +38,7 @@ class Public::MusicsController < ApplicationController
     if @music.update(music_params)
       redirect_to music_path(@music)
     else
+      @bands = Band.all
       render :edit
     end
   end

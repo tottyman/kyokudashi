@@ -1,30 +1,30 @@
 <h2 class="head-line title_h2 text-center"><b>ライブ日程設定</b></h2>
 <div class="container">
   <div class="row">
-  	<div class="col-7 mx-auto p-3">
+  	<div class="col-6 mx-auto pt-3">
   	  <%= form_with model: @admin, url: admin_top_path, method: :patch do |f| %>
   	  <div class="form-group col-12 p-1">
-  	      <%= f.label :"ライブ開催日", class: "col-5" %>
+  	      <%= f.label :"ライブ開催日", class: "col-6" %>
   	  	  <%= f.date_field :event_date, autofocus: true, autocomplete: "event_date" %>
   		</div>
 
   		<div class="form-group col-12 p-1">
-  	      <%= f.label :"曲出し締め切り日", class: "col-5" %>
+  	      <%= f.label :"曲出し締め切り日", class: "col-6" %>
   	  	  <%= f.date_field :deadline, autofocus: true, autocomplete: "deadline" %>
   		</div>
 
   		<div class="form-group col-12 p-1">
-  	      <%= f.label :"ライブ開始時刻", class: "col-5" %>
+  	      <%= f.label :"ライブ開始時刻", class: "col-6" %>
   	  	  <%= f.time_field :start_time, autofocus: true, autocomplete: "start_time" %>
   		</div>
 
   		<div class="form-group col-12 p-1">
-  	      <%= f.label :"ライブ終了時刻", class: "col-5" %>
+  	      <%= f.label :"ライブ終了時刻", class: "col-6" %>
   	  	  <%= f.time_field :finish_time, autofocus: true, autocomplete: "finish_time" %>
   		</div>
 
   		<div class="form-group col-12 p-1">
-  	      <%= f.label :"転換時間", class: "col-5" %>
+  	      <%= f.label :"転換時間", class: "col-6" %>
   	  	  <%= f.select :conversion_time, [['5分', 5], ['10分', 10], ['15分', 15], ['20分', 20], ['25分', 25], ['30分', 30]] %>
   		</div>
 
@@ -32,49 +32,52 @@
   	  	  <%= f.submit "編集内容を登録", class: "btn btn-lg bg-dark rounded-pill text-info" %>
   		</div>
   	  <% end %>
-
-  	  <div class="form-group col-12 mx-auto pt-4">
-  	    <table class="table table-hover table-bordered table-condensed text-center">
-          <thead>
-            <tr class="text-light bg-dark">
-              <th>開催日</th>
-              <th>〆切日</th>
-              <th>開始時刻</th>
-              <th>終了時刻</th>
-              <th>転換時間</th>
-    	      </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-light">
-              <td class="col-auto">
-                <%= @admin.event_date.strftime("%m/%d") %>
-              </td>
-              <td class="col-auto">
-                <%= @admin.deadline.strftime("%m/%d") %>
-              </td>
-              <td class="col-auto">
-                <%= @admin.start_time.strftime("%H:%M") %>
-              </td>
-              <td class="col-auto">
-                <%= @admin.finish_time.strftime("%H:%M") %>
-              </td>
-              <td class="col-auto">
-                <%= @admin.conversion_time %>分
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+	  <div class="col-10 mx-auto pt-4">
+	    <table class="table table-hover table-bordered table-condensed text-center">
+        <thead>
+          <tr class="text-light bg-dark">
+            <th>開催日</th>
+            <th>〆切日</th>
+            <th>開始時刻</th>
+            <th>終了時刻</th>
+            <th>転換時間</th>
+  	      </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-light">
+            <td class="col-auto">
+              <%= @admin.event_date.strftime("%m/%d") %>
+            </td>
+            <td class="col-auto">
+              <%= @admin.deadline.strftime("%m/%d") %>
+            </td>
+            <td class="col-auto">
+              <%= @admin.start_time.strftime("%H:%M") %>
+            </td>
+            <td class="col-auto">
+              <%= @admin.finish_time.strftime("%H:%M") %>
+            </td>
+            <td class="col-auto">
+              <%= @admin.conversion_time %>分
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 
-<h2 class="head-line title_h2 text-center mt-5"><b>新しく曲出しを募集する</b></h2>
+<h2 class="head-line title_h2 text-center mt-5"><b>曲出しを募集</b></h2>
 <div class="container">
   <div class="row">
   	<div class="col-7 mx-auto p-3">
   	  <div class="actions text-center p-3">
-  	    <p>曲だし、バンドデータを消去し新しく曲出しを募集</p>
+  	    <p>曲出しとバンドのデータを消去し新しく曲出しを募集する</p>
   	  </div>
       <div class="actions text-center p-3">
     	  <%= link_to admin_top_path, method: :delete, class: "btn btn-lg bg-dark rounded-pill text-info", "data-confirm" => "曲出しを募集してもよろしいですか？" do %>

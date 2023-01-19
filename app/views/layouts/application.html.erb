@@ -16,7 +16,7 @@
     <header>
 
       <nav class="navbar navbar-expand-lg navbar-dark pt-2 pb-2 shadow">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -42,7 +42,7 @@
           <% end %>
         </div>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarNav">
 
           <ul class="navbar-nav ml-auto mr-auto">
             <li class="nav-item active mr-3">
@@ -55,17 +55,15 @@
             </li>
 
             <% if current_user.present? %>
-              <li class="nav-item active mr-2">
+              <li class="nav-item active mr-3">
                 <%= link_to new_music_path, class: "link" do %>
-                  <i class="fa-solid fa-music"></i> 曲出し
+                  <i class="fa-solid fa-music"></i> 新規曲出し
                 <% end %>
               </li>
               <li class="nav-item active mr-5">
-                <% @music = Music.where(user_id: current_user.id) %>
-                <% @music.each do |music| %>
-                  <%= link_to music_path(music.id), class: "link" do %>
-                    <i class="fa-solid fa-music"></i> マイ曲出し
-                  <% end %>
+                <% @music = Music.find_by(user_id: current_user.id) %>
+                <%= link_to music_path(@music), class: "link" do %>
+                  <i class="fa-solid fa-music"></i> マイ曲出し
                 <% end %>
               </li>
             <% else %>
@@ -87,7 +85,7 @@
                   <i class="fa-solid fa-guitar"></i> バンド一覧
                 <% end %>
               </li>
-              <li class="nav-item active ml-3">
+              <li class="nav-item active">
                 <%= link_to timetable_admin_musics_path, class: "link" do %>
                   <i class="fa-regular fa-clock"></i> タイムテーブル
                 <% end %>
@@ -105,7 +103,7 @@
               </li>
               <li class="nav-item active mr-3">
                 <%= link_to bands_path, class: "link" do %>
-                  <i class="fa-solid fa-guitar"></i> バンド一覧
+                  <i class="fa-solid fa-guitar"></i> バンド登録/一覧
                 <% end %>
               </li>
             <% end %>

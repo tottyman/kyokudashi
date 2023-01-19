@@ -1,8 +1,7 @@
 <h2 class="text-center"><b>曲出し一覧</b></h2>
-
 <div class="container">
   <div class="row">
-    <div class="col-8 text-center mx-auto p-5">
+    <div class="col-12 text-center mx-auto pt-3">
       <table class="table table-hover table-bordered table-condensed">
         <thead>
           <tr class="text-light bg-dark">
@@ -33,6 +32,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @musics %>
     </div>
   </div>
 </div>

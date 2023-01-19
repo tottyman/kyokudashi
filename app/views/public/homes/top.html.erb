@@ -1,8 +1,8 @@
-<h1 class="head-line title_h2 text-center p-5">
+<h2 class="head-line text-center p-5">
   次回ライブ　<b><%= @admin.event_date.strftime("%m/%d") %></b>　<%= @admin.start_time.strftime("%H:%M") %>〜<%= @admin.finish_time.strftime("%H:%M") %><br/>
   <br/>
-  <b><%= @admin.deadline.strftime("%m/%d") %></b>　までに曲出しをお願いいたします！
-</h1>
+  曲出し期限は　<b><%= @admin.deadline.strftime("%m/%d") %></b>　です！
+</h2>
 
 <div class="text-center p-5">
   <% if current_user.present? %>
@@ -13,7 +13,7 @@
       <b>　②曲出し　</b>
     <% end %>
   <% else %>
-    <h4 class="text-primary">曲出しをするには <b>新規登録/ログイン</b> をお願いします。</h4>
+    <h4 class="text-primary">曲出しの際に <b>新規登録/ログイン</b> をお願いします。</h4>
     <%= link_to new_user_registration_path, class: "btn btn-lg bg-dark rounded-pill text-info mt-4" do %>
       <i class="fa-solid fa-user-plus"></i> 新規登録
     <% end %>

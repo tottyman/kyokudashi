@@ -2,13 +2,12 @@ ja:
   activerecord:
     attributes:
       music:
-        song1_name: ①曲名
-        song1_time: ①曲時間
+        music_name: 曲名
+        music_time: 曲時間
         band_name: 出場バンド名
-        mike_number: 使用マイク本数
       band:
         band_name: バンド名
-        mike_number: 使用マイク本数
+        mike_number: マイク本数
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

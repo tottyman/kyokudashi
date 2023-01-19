@@ -1,7 +1,7 @@
 <h2 class="head-line title_h2 text-center"><b><%= @user.nickname %>さん ユーザー詳細</b></h2>
 <div class="container">
   <div class="row">
-    <div class="col-7 text-center mx-auto p-5">
+    <div class="col-7 text-center mx-auto pt-3">
       <table class="table table-hover table-bordered table-condensed">
         <thead>
           <tr class="text-light bg-dark">
@@ -66,11 +66,11 @@
         </tbody>
       </table>
       <% if @user.id == current_user.id %>
-        <div class="text-center p-3">
-          <%= link_to edit_user_path(@user), class: "btn btn-lg bg-dark rounded-pill text-success mr-5" do %>
+        <div class="text-center pt-3">
+          <%= link_to edit_user_path(@user), class: "btn btn-lg bg-dark rounded-pill text-success mr-3" do %>
             <b>編集</b>
           <% end %>
-          <%= link_to user_path(@user), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-5", "data-confirm" => "本当に消しますか？" do %>
+          <%= link_to user_path(@user), method: :delete, class: "btn btn-lg bg-dark rounded-pill text-danger ml-3", "data-confirm" => "本当に消しますか？" do %>
             <b>消去</b>
           <% end %>
         </div>
@@ -78,7 +78,7 @@
       <% end %>
   	</div>
 
-  	<div class="col-5 text-center mx-auto p-5">
+  	<div class="col-5 text-center mx-auto pt-3">
       <table class="table table-hover table-bordered table-condensed">
         <thead>
           <tr class="text-light bg-dark">

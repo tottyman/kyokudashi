@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 text-center mx-auto p-5">
+    <div class="col-7 text-center mx-auto pt-3">
       <h2 class="p-3"><b><%= @band.band_name %> 詳細</b></h2>
       <table class="table table-hover table-bordered table-condensed">
         <thead>
@@ -65,8 +65,8 @@
         <% end %>
       </div>
     </div>
-    <div class="col-5 text-center mx-auto p-5">
-      <h2 class="p-3"><b>メンバー追加</b></h2>
+    <div class="col-5 text-center mx-auto pt-3">
+      <h2 class="p-3"><b>メンバー 追加</b></h2>
       <div class="form-group col-12 p-2">
         <%= form_with model: @member, url: admin_band_members_path(@band), method: :post do |f| %>
           <%= f.select :user_id, options_from_collection_for_select(@users, :id, :nickname), include_blank: "選択してください" %>
