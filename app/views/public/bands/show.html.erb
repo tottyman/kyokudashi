@@ -41,16 +41,8 @@
             <td class="col-auto">
               メンバー
             </td>
-            <td class="col-auto">
-              <% if @band.members.blank? %>
-                メンバーがいません
-              <% else %>
-                <% @band.members.each do |member| %>
-                  <% if member.user.present? %>
-                    <%= member.user.nickname %>　<%= link_to "消去", band_member_path(user_id: member.user_id, band_id: @band), method: :delete %></br>
-                  <% end %>
-                <% end %>
-              <% end %>
+            <td class="col-auto" id="members">
+              <%= render 'member', band: @band %>
             </td>
           </tr>
 
@@ -68,7 +60,7 @@
     <div class="col-5 text-center mx-auto pt-3">
       <h2 class="p-3"><b>メンバー 追加</b></h2>
       <div class="form-group col-12 p-2">
-        <%= form_with model: @member, url: band_members_path(@band), method: :post do |f| %>
+        <%= form_with model: @member, url: band_members_path(@band), method: :post, local: false do |f| %>
           <%= f.select :user_id, options_from_collection_for_select(@users, :id, :nickname), include_blank: "選択してください" %>
           <%= f.submit "追加", class: "btn btn-info col-xs-5" %>
         <% end %>

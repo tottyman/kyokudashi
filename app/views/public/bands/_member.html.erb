@@ -1,0 +1,5 @@
+<% band.members.each do |member| %>
+  <% if member.user.present? %>
+    <%= member.user.nickname %>　<%= link_to "消去", band_member_path(band.id, member.user_id), method: :delete, remote: true %></br>
+  <% end %>
+<% end %>
