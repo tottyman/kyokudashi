@@ -18,12 +18,17 @@ class Admin::BandsController < ApplicationController
   end
 
   def create
+    @bands = Band.all
     @band = Band.new(band_params)
     @band.linenumber = Band.count + 1
-    if @band.save
-      redirect_to admin_bands_path
+    if Band.where(band_name: @band.band_name).count == 0
+      if @band.save
+        redirect_to admin_bands_path
+      else
+        render :index
+      end
     else
-      @bands = Band.all
+      flash[:name] = "既にバンドが存在しています。"
       render :index
     end
   end
