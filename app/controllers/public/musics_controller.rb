@@ -6,6 +6,7 @@ class Public::MusicsController < ApplicationController
     @music = Music.new
     @bands = Band.all
     @count = current_user.musics.count
+    @admin = Admin.find(1)
   end
 
   def create

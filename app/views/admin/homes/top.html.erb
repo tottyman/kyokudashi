@@ -3,34 +3,42 @@
   <div class="row">
   	<div class="col-6 mx-auto pt-3">
   	  <%= form_with model: @admin, url: admin_top_path, method: :patch do |f| %>
-  	  <div class="form-group col-12 p-1">
+  	    <div class="form-group col-12 p-1">
   	      <%= f.label :"ライブ開催日", class: "col-6" %>
   	  	  <%= f.date_field :event_date, autofocus: true, autocomplete: "event_date" %>
-  		</div>
+  		  </div>
 
-  		<div class="form-group col-12 p-1">
+  		  <div class="form-group col-12 p-1">
   	      <%= f.label :"曲出し締め切り日", class: "col-6" %>
   	  	  <%= f.date_field :deadline, autofocus: true, autocomplete: "deadline" %>
-  		</div>
+  		  </div>
 
-  		<div class="form-group col-12 p-1">
+  		  <div class="form-group col-12 p-1">
   	      <%= f.label :"ライブ開始時刻", class: "col-6" %>
   	  	  <%= f.time_field :start_time, autofocus: true, autocomplete: "start_time" %>
-  		</div>
+  	    </div>
 
-  		<div class="form-group col-12 p-1">
+  		  <div class="form-group col-12 p-1">
   	      <%= f.label :"ライブ終了時刻", class: "col-6" %>
   	  	  <%= f.time_field :finish_time, autofocus: true, autocomplete: "finish_time" %>
-  		</div>
+  		  </div>
 
-  		<div class="form-group col-12 p-1">
+  		  <div class="form-group col-12 p-1">
   	      <%= f.label :"転換時間", class: "col-6" %>
   	  	  <%= f.select :conversion_time, [['5分', 5], ['10分', 10], ['15分', 15], ['20分', 20], ['25分', 25], ['30分', 30]] %>
-  		</div>
+  		  </div>
+  		
+  		  <div class="form-group col-12 p-1">
+  	      <%= f.label :"曲出し有効/無効", class: "col-6" %>
+		  	  <%= f.radio_button :status, "false" %>
+		  	  <%= f.label :"有効" %>
+		  	  <%= f.radio_button :status, "true" %>
+		  	  <%= f.label :"無効" %>
+  		  </div>
 
-  		<div class="actions text-center p-3">
+  		  <div class="actions text-center p-3">
   	  	  <%= f.submit "編集内容を登録", class: "btn btn-lg bg-dark rounded-pill text-info" %>
-  		</div>
+  		  </div>
   	  <% end %>
     </div>
   </div>
@@ -46,6 +54,7 @@
             <th>開始時刻</th>
             <th>終了時刻</th>
             <th>転換時間</th>
+            <th>曲出し受付</th>
   	      </tr>
         </thead>
         <tbody>
@@ -64,6 +73,13 @@
             </td>
             <td class="col-auto">
               <%= @admin.conversion_time %>分
+            </td>
+            <td class="col-auto">
+              <% if @admin.status == false %>
+                受付中
+              <% else %>
+                受付終了
+              <% end %>
             </td>
           </tr>
         </tbody>

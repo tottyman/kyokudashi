@@ -3,41 +3,47 @@
 <h2 class="head-line title_h2 text-center"><b>曲出し登録</b></h2>
 <div class="container">
   <div class="row">
-  	<% if @count <= 1 %>
-	  <div class="col-7 mx-auto pt-3">
-		<%= form_with model: @music, url: musics_path, method: :post do |f| %>
-		  <div class="form-group col-12 p-1">
-		    <%= f.label :"曲名", class: "col-6" %>
-		  	<%= f.text_field :music_name %>
-		  </div>
-	
-		  <div class="form-group col-12 p-1">
-		  	<%= f.label :"曲時間(秒数切り上げ)", class: "col-6" %>
-		  	<%= f.number_field :music_time, min: 1, max: 30 %>
-		  </div>
-	
-		  <div class="form-group col-12 p-1">
-		  	<%= f.label :"出場バンド名", class: "col-6" %>
-		  	<%= f.select :band_id, options_from_collection_for_select(@bands, :id, :band_name), include_blank: "選択してください" %>
-		  </div>
-	
-		  <div class="form-group col-12 p-1">
-		  	<%= f.label :"公開設定", class: "col-6" %>
-		  	<%= f.radio_button :status, "false" %>
-		  	<%= f.label :"公開" %>
-		  	<%= f.radio_button :status, "true" %>
-		  	<%= f.label :"非公開" %>
-		  </div>
-	
-		  <div class="actions text-center p-3">
-		  	<%= f.submit "曲出しを登録", class: "btn btn-lg bg-dark rounded-pill text-info" %>
-		  </div>
-		<% end %>
+  	<% if @admin.status == false %>
+	  <% if @count <= 1 %>
+		<div class="col-7 mx-auto pt-3">
+		  <%= form_with model: @music, url: musics_path, method: :post do |f| %>
+			<div class="form-group col-12 p-1">
+			  <%= f.label :"曲名", class: "col-6" %>
+			  <%= f.text_field :music_name %>
+			</div>
+		
+			<div class="form-group col-12 p-1">
+			  <%= f.label :"曲時間(秒数切り上げ)", class: "col-6" %>
+			  <%= f.number_field :music_time, min: 1, max: 30 %>
+			</div>
+		
+			<div class="form-group col-12 p-1">
+			  <%= f.label :"出場バンド名", class: "col-6" %>
+			  <%= f.select :band_id, options_from_collection_for_select(@bands, :id, :band_name), include_blank: "選択してください" %>
+			</div>
+		
+			<div class="form-group col-12 p-1">
+			  <%= f.label :"公開設定", class: "col-6" %>
+			  <%= f.radio_button :status, "false" %>
+			  <%= f.label :"公開" %>
+			  <%= f.radio_button :status, "true" %>
+			  <%= f.label :"非公開" %>
+			</div>
+		
+			<div class="actions text-center p-3">
+			  <%= f.submit "曲出しを登録", class: "btn btn-lg bg-dark rounded-pill text-info" %>
+			</div>
+		  <% end %>
+		</div>
+	  <% else %>
+	    <div class="col-12 mx-auto text-center pt-5">
+		  <h2><b>２曲以上の曲出しはできません！</b></h2>
+		</div>
+	  <% end %>
+	<% else %>
+	  <div class="col-12 mx-auto text-center pt-5">
+	  	<h2><b>現在曲出しは受け付けておりません！</b></h2>
 	  </div>
-    <% else %>
-      <div class="col-12 mx-auto text-center pt-5">
-	  	<h2><b>２曲以上の曲出しはできません！</b></h2>
-	  </div>
-    <% end %>
+	<% end %>
   </div>
 </div>

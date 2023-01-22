@@ -1,10 +1,10 @@
 <%= render 'layouts/error_messages', model: @band %>
-<%= flash[:name] %>
 
 <div class="container">
   <div class="row">
   	<div class="col-6 mx-auto pt-3">
   	  <h2 class="text-center p-3"><b>バンド登録</b></h2>
+  	  <h5 class="text-danger text-center"><%= flash[:name] %></h5>
   	  <%= form_with model: @band, url: admin_bands_path, method: :post do |f| %>
   	    <div class="form-group col-12 p-1">
   	      <%= f.label :"バンド名", class: "col-6" %>

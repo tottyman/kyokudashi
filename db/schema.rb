@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2023_01_14_032130) do
     t.time "start_time", null: false
     t.time "finish_time", null: false
     t.integer "conversion_time", null: false
+    t.boolean "status", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
