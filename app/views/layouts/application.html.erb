@@ -60,12 +60,15 @@
                   <i class="fa-solid fa-music"></i> 新規曲出し
                 <% end %>
               </li>
-              <li class="nav-item active mr-5">
-                <% @music = Music.find_by(user_id: current_user.id) %>
-                <%= link_to music_path(@music), class: "link" do %>
-                  <i class="fa-solid fa-music"></i> マイ曲出し
-                <% end %>
-              </li>
+              <% if Music.exists?(user_id: current_user.id) == true %>
+                <li class="nav-item active mr-5">
+                  <% @music = Music.find_by(user_id: current_user.id) %>
+                  <%= link_to music_path(@music), class: "link" do %>
+                    <i class="fa-solid fa-music"></i> マイ曲出し
+                  <% end %>
+                </li>
+              <% else %>
+              <% end %>
             <% else %>
             <% end %>
 
