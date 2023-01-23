@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 text-center mx-auto pt-3">
+    <div class="col-7 text-center mx-auto pt-5">
       <h2 class="p-3"><b><%= @band.band_name %> 詳細</b></h2>
       <table class="table table-hover table-bordered table-condensed">
         <thead>
@@ -57,7 +57,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-5 text-center mx-auto pt-3">
+    <div class="col-5 text-center mx-auto pt-5">
       <h2 class="p-3"><b>メンバー 追加</b></h2>
       <div class="form-group col-12 p-2">
         <%= form_with model: @member, url: band_members_path(@band), method: :post, local: false do |f| %>

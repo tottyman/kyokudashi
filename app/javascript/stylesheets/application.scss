@@ -17,26 +17,106 @@ main {
   width: 100%;
   background-repeat: repeat;
   flex: 1;
-  padding: 40px 0;
 }
 
+/*ヘッダー*/
 header {
   background: #000033;
 }
 
-footer {
-  background: #000033;
+.link {
+  text-decoration: none;
+  color: white ;
 }
 
+/*エラー*/
 .field_with_errors {
   display: contents;
 }
 
-.link {
-    text-decoration: none;
-    color: white ;
-}
-
+/*タイムテーブル*/
 .timetable {
   background: #CCFFFF;
+}
+
+/*スライダー処理*/
+.slider {
+  position:relative;
+  z-index: 1;
+  height: 400px;
+}
+
+.slider-item {
+  width: 800px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slider-item01 {
+  background: url("../../assets/images/top-image1.jpeg");
+  background-size:  cover;
+}
+
+.slider-item02 {
+  background-image: url(../../assets/images/top-image2.jpeg);
+  background-size:  cover;
+}
+
+.slider-item03 {
+  background-image: url(../../assets/images/top-image3.jpeg);
+  background-size:  cover;
+}
+
+.top_text{
+  position: absolute;
+  color: white;
+  z-index: 2;
+  top: 10%;
+  left: 40%;
+  -webkit-transform: translate(-30%, 0%);
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 40px;
+}
+
+.top_text span{
+  font-weight: bold;
+  font-size: 40px;
+  vertical-align: bottom;
+}
+
+/*フッター*/
+.footer02 {
+ color: #808080;
+ background: #000033;
+ text-align: center;
+ padding: 30px;
+}
+.footer02 a {
+ color: #808080;
+ text-decoration: none;
+}
+.footer02 a:hover {
+ text-decoration: underline;
+}
+.footer02 .menu {
+ margin: 0;
+ padding: 0;
+ list-style: none;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+.footer02 .menu li {
+ margin: 0;
+ padding: 0 20px;
+}
+.footer02 .copyright {
+ margin: 0;
+ padding: 20px 0 0 0;
 }

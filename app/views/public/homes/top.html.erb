@@ -1,8 +1,23 @@
-<h2 class="head-line text-center p-5">
+<div class="top_slide text-center">
+  <ul class="p-0 slider">
+    <li class="slider-item slider-item01"></li>
+    <li class="slider-item slider-item02"></li>
+    <li class="slider-item slider-item03"></li>
+  </ul>
+  <p class="top_text">
+    <span>こちらは曲出しアプリです！</span><br>
+    みなさんがライブで演奏したい曲を集計いたします。<br>
+    一人２曲までとなりますのでご了承ください。<br>
+    曲出しには会員登録が必要になります。
+  </p>
+</div>
+
+
+<h1 class="head-line text-center p-5">
   次回ライブ　<b><%= @admin.event_date.strftime("%m/%d") %></b>　<%= @admin.start_time.strftime("%H:%M") %>〜<%= @admin.finish_time.strftime("%H:%M") %><br/>
   <br/>
-  曲出し期限は　<b><%= @admin.deadline.strftime("%m/%d") %></b>　です！
-</h2>
+  曲出し期限　<b><%= @admin.deadline.strftime("%m/%d") %></b>
+</h1>
 
 <div class="text-center p-5">
   <% if current_user.present? %>
@@ -22,3 +37,17 @@
     <% end %>
   <% end %>
 </div>
+
+
+<script>
+  $('.slider').slick({
+    autoplay: true,//自動的に動き出すか
+    autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
+    speed: 1500,//スライドの動きのスピード
+    infinite: true,//スライドをループさせるか
+    slidesToShow: 1,//スライドを画面に3枚見せる
+    slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+    arrows: false,
+    dots: true,//下部ドットナビゲーションの表示
+  });
+</script>

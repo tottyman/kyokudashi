@@ -1,7 +1,7 @@
 <%= render 'layouts/error_messages', model: @band %>
 <div class="container">
   <div class="row">
-  	<div class="col-7 mx-auto pt-3">
+  	<div class="col-7 mx-auto pt-5">
   	  <h2 class="text-center p-3"><b>バンド情報編集</b></h2>
   	  <%= form_with model: @band, url: admin_band_path, method: :patch do |f| %>
   	    <div class="form-group col-12 p-1">

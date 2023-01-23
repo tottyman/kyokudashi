@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-  	<div class="col-9 mx-auto pt-3">
+  	<div class="col-9 mx-auto pt-5">
   	  <h2 class="text-center pb-4"><b><%= @user.nickname %>さん 編集画面</b></h2>
   	  <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
     	  <div class="form-group col-12 p-1">

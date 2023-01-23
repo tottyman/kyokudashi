@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg navbar-dark pt-2 pb-2 shadow">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-brand text-light ml-4 mr-5">
+    <% if admin_signed_in? %>
+      <%= link_to admin_top_path do %>
+        <%= image_tag 'logo.png', :size =>'80x50' %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', :size =>'80x50' %>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="navbar-brand text-light ml-3">
+    <% if admin_signed_in? %>
+      <b>管理者アカウント</b>
+    <% elsif current_user.present? %>
+      <b>こんにちは、<%= current_user.name %>さん！</b>
+    <% else %>
+      <b>こんにちは、ゲストさん！</b>
+    <% end %>
+  </div>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+  
+    <ul class="navbar-nav ml-auto mr-auto">
+      <li class="nav-item active mr-3">
+        <% if current_user.present? %>
+          <%= link_to user_path(current_user.id), class: "link" do %>
+            <i class="fa-solid fa-user"></i> マイページ
+          <% end %>
+        <% else %>
+        <% end %>
+      </li>
+  
+      <% if current_user.present? %>
+        <li class="nav-item active mr-3">
+          <%= link_to new_music_path, class: "link" do %>
+            <i class="fa-solid fa-music"></i> 新規曲出し
+          <% end %>
+        </li>
+        <% if Music.exists?(user_id: current_user.id) == true %>
+          <li class="nav-item active mr-5">
+            <% @music = Music.find_by(user_id: current_user.id) %>
+            <%= link_to music_path(@music), class: "link" do %>
+              <i class="fa-solid fa-music"></i> マイ曲出し
+            <% end %>
+          </li>
+        <% else %>
+        <% end %>
+      <% else %>
+      <% end %>
+  
+      <% if admin_signed_in? %>
+        <li class="nav-item active mr-3">
+          <%= link_to admin_musics_path, class: "link" do %>
+            <i class="fa-solid fa-headphones"></i> 曲出し一覧
+          <% end %>
+        </li>
+        <li class="nav-item active mr-3">
+          <%= link_to admin_users_path, class: "link" do %>
+            <i class="fa-solid fa-people-group"></i> ユーザー一覧
+          <% end %>
+        </li>
+        <li class="nav-item active mr-5">
+          <%= link_to admin_bands_path, class: "link" do %>
+            <i class="fa-solid fa-guitar"></i> バンド一覧
+          <% end %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to timetable_admin_musics_path, class: "link" do %>
+            <i class="fa-regular fa-clock"></i> タイムテーブル
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item active mr-3">
+          <%= link_to musics_path, class: "link" do %>
+            <i class="fa-solid fa-headphones"></i> 曲出し一覧
+          <% end %>
+        </li>
+        <li class="nav-item active mr-3">
+          <%= link_to users_path, class: "link" do %>
+            <i class="fa-solid fa-people-group"></i> ユーザー一覧
+          <% end %>
+        </li>
+        <li class="nav-item active mr-3">
+          <%= link_to bands_path, class: "link" do %>
+            <i class="fa-solid fa-guitar"></i> バンド登録/一覧
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  
+    <ul class="navbar-nav ml-auto">
+      <% if admin_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %>
+          <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+        <% end %>
+      <% elsif user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn rounded-pill btn-outline-light text-danger' do %>
+            <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item mr-3">
+          <%= link_to new_user_registration_path, class: 'btn rounded-pill btn-outline-light text-info' do %>
+            <i class="fa-solid fa-user-plus"></i> SIGN UP
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class: 'btn rounded-pill btn-outline-light text-success' do %>
+            <i class="fa-solid fa-right-to-bracket"></i> SIGN IN
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
