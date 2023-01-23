@@ -31,11 +31,10 @@
                 <%= (band.musics.sum(:music_time).to_i/5+1)*5 %>
               </td>
 
-              <td class="col-auto">
+              <td class="timetable col-auto">
                 <% require "active_support/time" %>
                 <% target_band_time = ((Band.find_by(linenumber: idx + 1).musics.sum(:music_time).to_i/5+1)*5)*60 %>
-                <%= (@admintime + @over_time).strftime("%H:%M") %> ~
-                <%= (@admintime + @over_time + target_band_time).strftime("%H:%M") %>
+                <b><%= (@admintime + @over_time).strftime("%H:%M") %> ~ <%= (@admintime + @over_time + target_band_time).strftime("%H:%M") %></b>
                 <% @over_time = @over_time + target_band_time + @conversion_time %>
               </td>
 
