@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  background-image: url(/images/blob-scatter-haikei.png);
+  background-image: url('../images/blob-scatter-haikei.png');
   background-size: cover;
   background-position: bottom;
   height: 100%;
@@ -55,17 +55,17 @@ header {
 }
 
 .slider-item01 {
-  background: url(/images/top-image1.jpg);
+  background: url('../images/top-image1.jpg');
   background-size:  cover;
 }
 
 .slider-item02 {
-  background-image: url(/images/top-image2.jpg);
+  background-image: url('../images/top-image2.jpg');
   background-size:  cover;
 }
 
 .slider-item03 {
-  background-image: url(/images/top-image3.jpg);
+  background-image: url('../images/top-image3.jpg');
   background-size:  cover;
 }
 
