@@ -48,7 +48,7 @@ header {
 
 .slider-item {
   width: 800px;
-  height: 400px;
+  height: 400px !important;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
