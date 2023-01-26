@@ -120,3 +120,21 @@ header {
  margin: 0;
  padding: 20px 0 0 0;
 }
+
+/*スマホ対応*/
+@media (max-width: 600px) {
+  .top_text{
+    font-size: 15px;
+    padding-top: 130px;
+  }
+  .top_text span{
+  font-weight: bold;
+  font-size: 25px;
+  vertical-align: bottom;
+  }
+  
+  html {
+    /* ルート要素の文字サイズを変更する */
+    font-size: 10px;
+  } 
+}
