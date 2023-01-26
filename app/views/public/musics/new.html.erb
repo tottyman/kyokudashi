@@ -5,7 +5,7 @@
   <div class="row">
   	<% if @admin.status == false %>
 	  <% if @count <= 1 %>
-		<div class="col-7 mx-auto pt-3">
+		<div class="col-8 mx-auto pt-3">
 		  <%= form_with model: @music, url: musics_path, method: :post do |f| %>
 			<div class="form-group col-12 p-1">
 			  <%= f.label :"曲名", class: "col-6" %>
