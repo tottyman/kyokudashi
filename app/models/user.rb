@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :bands, through: :members
   
-  has_many :musics
+  has_many :musics, dependent: :destroy
   has_many :bands, through: :musics
   
   has_one_attached :image
