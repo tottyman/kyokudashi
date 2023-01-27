@@ -23,7 +23,7 @@ class Public::MusicsController < ApplicationController
   end
 
   def index
-    @musics = Music.page(params[:page])
+    @musics = Music.page(params[:page]).per(20)
   end
 
   def show
