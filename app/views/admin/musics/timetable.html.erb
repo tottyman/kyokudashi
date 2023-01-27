@@ -7,7 +7,7 @@
         <thead>
           <tr class="text-light bg-dark">
             <th>バンド名</th>
-            <th>メンバー数</th>
+            <th>バンド曲数</th>
             <th>バンド持ち時間</th>
             <th>タイムスケジュール</th>
             <th>並び替え</th>
@@ -24,7 +24,7 @@
               </td>
 
               <td class="col-auto">
-                <i class="fa-solid fa-users"></i>　<%= band.members.count %>
+                <%= band.musics.count %>
               </td>
 
               <td class="col-auto">
