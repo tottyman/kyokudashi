@@ -15,6 +15,9 @@ class Public::MusicsController < ApplicationController
     if @music.save
       redirect_to musics_path
     else
+      @bands = Band.all
+      @count = current_user.musics.count
+      @admin = Admin.find(1)
       render :new
     end
   end
