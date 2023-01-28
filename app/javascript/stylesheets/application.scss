@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  background-image: url('../images/blob-scatter-haikei.png');
+  background-image: url('../images/haikei.png');
   background-size: cover;
   background-position: bottom;
   height: 100%;
@@ -19,9 +19,13 @@ main {
   flex: 1;
 }
 
+.top-bg-color{
+  background: #FFFFFF;
+}
+
 /*ヘッダー*/
 header {
-  background: #000033;
+  background: #AAAAAA;
 }
 
 .link {
@@ -93,7 +97,7 @@ header {
 /*フッター*/
 .footer02 {
  color: #808080;
- background: #000033;
+ background: #AAAAAA;
  text-align: center;
  padding: 30px;
 }

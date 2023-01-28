@@ -1,43 +1,44 @@
-<div class="top_slide text-center">
-  <ul class="p-0 slider">
-    <li class="slider-item slider-item01"></li>
-    <li class="slider-item slider-item02"></li>
-    <li class="slider-item slider-item03"></li>
-  </ul>
-  <p class="top_text">
-    <span>こちらは曲出しアプリです！</span><br>
-    みなさんがライブで演奏したい曲を集計いたします。<br>
-    一人２曲までとなりますのでご了承ください。<br>
-    曲出しには会員登録が必要になります。
-  </p>
+<div class="top-bg-color">
+  <div class="top_slide text-center">
+    <ul class="p-0 slider">
+      <li class="slider-item slider-item01"></li>
+      <li class="slider-item slider-item02"></li>
+      <li class="slider-item slider-item03"></li>
+    </ul>
+    <p class="top_text">
+      <span>こちらは曲出しアプリです！</span><br>
+      みなさんがライブで演奏したい曲を集計いたします。<br>
+      一人２曲までとなりますのでご了承ください。<br>
+      曲出しには会員登録が必要になります。
+    </p>
+  </div>
+  
+  
+  <h1 class="head-line text-center p-5">
+    次回ライブ　<b><%= @admin.event_date.strftime("%m/%d") %></b>　<%= @admin.start_time.strftime("%H:%M") %>〜<%= @admin.finish_time.strftime("%H:%M") %><br/>
+    <br/>
+    曲出し期限　<b><%= @admin.deadline.strftime("%m/%d") %></b>
+  </h1>
+  
+  <div class="text-center p-5">
+    <% if current_user.present? %>
+      <%= link_to bands_path, class: "btn btn-lg bg-dark rounded-pill text-info mr-5" do %>
+        <b>①バンド登録</b>
+      <% end %>
+      <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
+        <b>　②曲出し　</b>
+      <% end %>
+    <% else %>
+      <h4 class="text-primary">曲出しの際に <b>新規登録/ログイン</b> をお願いします。</h4>
+      <%= link_to new_user_registration_path, class: "btn btn-lg bg-dark rounded-pill text-info mt-4" do %>
+        <i class="fa-solid fa-user-plus"></i> 新規登録
+      <% end %>
+      <%= link_to new_user_session_path, class: "btn btn-lg bg-dark rounded-pill text-success mt-4" do %>
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-
-<h1 class="head-line text-center p-5">
-  次回ライブ　<b><%= @admin.event_date.strftime("%m/%d") %></b>　<%= @admin.start_time.strftime("%H:%M") %>〜<%= @admin.finish_time.strftime("%H:%M") %><br/>
-  <br/>
-  曲出し期限　<b><%= @admin.deadline.strftime("%m/%d") %></b>
-</h1>
-
-<div class="text-center p-5">
-  <% if current_user.present? %>
-    <%= link_to bands_path, class: "btn btn-lg bg-dark rounded-pill text-info mr-5" do %>
-      <b>①バンド登録</b>
-    <% end %>
-    <%= link_to new_music_path, class: "btn btn-lg bg-dark rounded-pill text-info" do %>
-      <b>　②曲出し　</b>
-    <% end %>
-  <% else %>
-    <h4 class="text-primary">曲出しの際に <b>新規登録/ログイン</b> をお願いします。</h4>
-    <%= link_to new_user_registration_path, class: "btn btn-lg bg-dark rounded-pill text-info mt-4" do %>
-      <i class="fa-solid fa-user-plus"></i> 新規登録
-    <% end %>
-    <%= link_to new_user_session_path, class: "btn btn-lg bg-dark rounded-pill text-success mt-4" do %>
-      <i class="fa-solid fa-right-to-bracket"></i> ログイン
-    <% end %>
-  <% end %>
-</div>
-
 
 <script>
   $('.slider').slick({
