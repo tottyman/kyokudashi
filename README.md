@@ -19,11 +19,8 @@
 - 個人的なライブが開かれる際の準備時
 - 曲について集計したい時
 
-## 設計書
-<...>
-
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：MacOS
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
