@@ -2,7 +2,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+  
+  <!--ロゴの設定-->
   <div class="navbar-brand text-light ml-4 mr-5">
     <% if admin_signed_in? %>
       <%= link_to admin_top_path do %>
@@ -15,6 +16,7 @@
     <% end %>
   </div>
   
+  <!--ログイン名表示-->
   <div class="navbar-brand text-light ml-3">
     <% if admin_signed_in? %>
       <b>管理者アカウント</b>
@@ -25,8 +27,8 @@
     <% end %>
   </div>
   
+  <!--ナビゲーションバーの表示-->
   <div class="collapse navbar-collapse" id="navbarNav">
-  
     <ul class="navbar-nav ml-auto mr-auto">
       <li class="nav-item active mr-3">
         <% if current_user.present? %>
